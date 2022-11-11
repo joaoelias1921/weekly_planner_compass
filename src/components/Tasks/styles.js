@@ -4,7 +4,6 @@ export const Tasks = styled.div`
 
     min-width: 100%;
     overflow: scroll;
-    padding: 1.5rem;
     flex-grow: 1;
 `
 export const Time = styled.div`
