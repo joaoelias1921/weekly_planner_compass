@@ -21,7 +21,6 @@ export function DayTabs() {
         weekDays.map((day) => (
           <Tab
             color={day.color}
-            weekDays={weekDays}
             onClick={() => setSelectedWeekDay(day.weekDay)}
             selected={selectedWeekDay === day.weekDay}
           >
