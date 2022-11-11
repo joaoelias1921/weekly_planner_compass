@@ -7,7 +7,7 @@ export const Tasks = ({tasks}) => {
 
 
   return (
-    <s.Tasks onClick={()=> alert('tet')}>
+    <s.Tasks>
       <s.TimeRow>
         <s.Time color='#FFFFFF'>
           Time
