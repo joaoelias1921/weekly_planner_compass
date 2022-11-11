@@ -3,9 +3,10 @@ import React from 'react';
 import * as s from './styles.js';
 import { Card } from '../Card';
 
-export const Tasks = ({tasks}) => {
+export const Tasks = (props) => {
 
-
+  let {color, allTasks} = props.tasks
+  
   return (
     <s.Tasks>
       <s.TimeRow>
@@ -13,9 +14,9 @@ export const Tasks = ({tasks}) => {
           Time
         </s.Time>
       </s.TimeRow>
-        {
-          tasks.map(({time, tasks, color}, index) => (
-            <s.TimeRow>
+        {allTasks &&
+          allTasks.map(({time, tasks}, index) => (
+            <s.TimeRow key={index}>
               <s.Time color={(tasks.length == 1 ? color : 'rgba(0, 0, 0, 0.7);')}>
                 <s.Title>{time}</s.Title>
               </s.Time>
