@@ -63,6 +63,7 @@ export function SignUp() {
       validateEmail(data.email) &&
       data.password === data.samePassword
     ) {
+      window.localStorage.setItem('user', JSON.stringify(data));
       setError('');
       navigate('/login');
     }
