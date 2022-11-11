@@ -2,6 +2,7 @@ import * as S from './styles';
 import React, { useState } from 'react';
 import { DayTabs } from '../../components/DayTabs';
 import { Tasks } from '../../components/Tasks';
+import { Header } from '../../components/HeaderHome'
 
 export function Dashboard() {
   
@@ -47,15 +48,19 @@ export function Dashboard() {
   const [weekDayTasks, setWeekDayTasks] = useState([]);
 
   return (
-    <S.Container>
-      {/* Header Component */}
-      {/* Form Component */}
-      
-      <S.TabContainer>
-        <DayTabs setWeekDayTasks={setWeekDayTasks} />
-      </S.TabContainer>
+    <S.PlannerContainer>
+      <Header />
+      <S.Container>
+        
+        {/* Form Component */}
+        
+        <S.TabContainer>
+          <DayTabs setWeekDayTasks={setWeekDayTasks} />
+        </S.TabContainer>
 
-      <Tasks tasks={weekDayTasks} />
-    </S.Container>
+        <Tasks tasks={weekDayTasks} />
+      </S.Container>
+    </S.PlannerContainer>
+
   );
 }
