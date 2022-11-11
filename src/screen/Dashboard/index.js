@@ -1,45 +1,67 @@
 import React, { useState } from "react";
-import { Tasks } from '../../components/Tasks';
-import { Container } from "./styles";
+import { Container  } from './styles'
+import Input from '../../components/atoms/Input';
 
-export function Dashboard() {
+const Dashboard = () => {
 
-    const WEEKDAY_JSON_MODEL = [
-        {
-          time: '10h30m',
-          color: 'red',
-          tasks: [
-            {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-            {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-            {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-          ]
-        },
-        {
-          time: '09h30m',
-          color: 'red',
-          tasks: [
-            {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-          ]
-        },
-        {
-          time: '09h45m',
-          color: 'red',
-          tasks: [
-            {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-            {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-            {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-          ]
-        }
-      ]   
+  const [data, setData ] = useState([{name: 'lucas'}]);
+  const [name, setName ] = useState();
+  const [selectValue, setSelectValue] = useState();
+  //const data = [{name: 'lucas'}]
 
-    const [weekDayTasks, setWeekDayTasks] = useState(WEEKDAY_JSON_MODEL);
+  const handleSave = () => {
+    setData( current => [...current, {name, selectValue}])
+  } 
+  const handleDeleteOne = (value) => {
+    setData([
+      ...data.slice(0, value),
+      ...data.slice(value + 1)
+    ]);
+  } 
 
-    return (
-        <Container>
-            {/* Header Component */}
-            {/* Form Component */}
-            {/* Tabs Component */}
-            <Tasks tasks={weekDayTasks} />
-        </Container>
-    )
+  const weekly = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+
+  return(
+    <React.Fragment>
+       
+        <h1>dashboard</h1>
+        <Input
+          type="text"
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
+        <select value={selectValue} onChange={e => setSelectValue(e.target.value)}>
+          {weekly.map(value => (
+            <option value={value}>{value[0].toUpperCase() + value.substring(1)}</option>
+          ))}
+ 
+        </select>
+
+        <select id="hour">
+          <option value="10:30">10:30</option>
+          <option value="11:00">11:00</option>
+          <option value="11:30">11:30</option>
+          <option value="12:00">12:00</option>
+          <option value="12:30">12:30</option>
+          <option value="13:00">13:00</option>
+          <option value="13:30">13:30</option>
+        </select>
+
+        <button onClick={handleSave}> Add</button>
+
+        <hr />
+        <ul>
+          {data.map((value, index) => 
+            <div>
+              <li key={value.name}> {value.name}/{value.selectValue} </li> <button onClick={ () => handleDeleteOne(index)} > Delete  </button>
+            </div>
+          )}
+        </ul>
+
+       
+    </React.Fragment>
+
+  )
 }
+
+export default Dashboard;

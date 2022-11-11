@@ -15,7 +15,8 @@ export function Login() {
   function handleNavigation(e) {
     e.preventDefault();
     if (user === 'compass' && password === '12345') {
-      navigate('/');
+      localStorage.setItem('auth', true)
+      navigate('/home');
     } else {
       setError(true);
     }
