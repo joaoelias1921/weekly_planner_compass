@@ -11,7 +11,7 @@ export const Form = styled.div`
 margin-left: 5px;
   input {
     margin-left: 5px;
-    text-indent: 10px;
+    text-indent: 5px;
     height: 30px;
     border-radius: 5px;
     border: 1px solid #daa520;
