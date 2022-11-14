@@ -7,6 +7,11 @@ export const StyledContainer = styled.div`
     align-items: center;
     justify-content: center;
     color: #222222;
+
+    @media screen and (max-width: 768px){
+        width: 100%;
+        margin-bottom: 5%;
+    }
 `
 
 export const StyledLocation = styled.p`

@@ -2,9 +2,8 @@ import React from 'react';
 import { Route, Routes, BrowserRouter,  Navigate, Outlet   } from 'react-router-dom';
 import { Login } from './screen/Login';
 import { SignUp } from './screen/SignUp';
-//import Dashboard from './screen/Dashboard';
- 
-import { Dashboard } from './screen/Planner';
+import { Dashboard } from './screen/Dashboard';
+
 function ProtectedRoutes() {
   const fakeAuthorization = localStorage.getItem('auth') === 'true' ? true : false;
 

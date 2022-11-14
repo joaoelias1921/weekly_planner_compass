@@ -48,9 +48,12 @@ export const Tasks = (props) => {
                  }
                  {
                    value[1].map(({description, id}, index) => (
-                     <>
-                       <Card id={id} description={description} color={(value[1].length == 1 ? color : 'rgba(0, 0, 0, 0.7);')} />
-                     </>
+                       <Card
+                         key={index}
+                         id={id} 
+                         description={description} 
+                         color={(value[1].length == 1 ? color : 'rgba(0, 0, 0, 0.7);')} 
+                       />
                    ))
                  }
                </s.TaskContainer>

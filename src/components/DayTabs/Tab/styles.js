@@ -11,5 +11,12 @@ export const Container = styled.div`
     padding-left: 6px;
     cursor: pointer;
     transition: 240ms ease-in-out;
-    box-shadow: ${props => (props.selected ? "gray 0px 4px 4px" : "unset")}
+    box-shadow: ${props => (props.selected ? "gray 0px 4px 4px" : "unset")};
+    
+    @media screen and (max-width: 768px) {
+        width: 45%;
+        margin-left: 2%;
+        margin-bottom: 2%;
+        height: 42px;
+    }
 `;
