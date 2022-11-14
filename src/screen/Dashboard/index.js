@@ -15,9 +15,7 @@ export function Dashboard() {
       <S.Container>
 
         <FormBooking />
-        <S.TabContainer>
-          <DayTabs setWeekDayTasks={setWeekDayTasks} />
-        </S.TabContainer>
+        <DayTabs setWeekDayTasks={setWeekDayTasks} />
 
         <Tasks tasks={weekDayTasks} />
       </S.Container>

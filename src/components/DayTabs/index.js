@@ -28,10 +28,10 @@ export function DayTabs({setWeekDayTasks}) {
     <S.Container>
        
       {
-        weekDays.map((day) => (
+        weekDays.map((day, index) => (
           <Tab
+            key={index}
             color={day.color}
-            weekDays={weekDays}
             onClick={() => {
               setSelectedWeekDay(day.weekDay)
             }}

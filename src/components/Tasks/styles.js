@@ -24,6 +24,11 @@ export const Tasks = styled.div`
      ::-webkit-scrollbar-thumb:hover {
        background: #555;
      }
+
+     @media screen and (max-width: 768px) {
+        margin-top: 10%;
+        margin-bottom: 20%;
+     }
  
 `
 export const Time = styled.div`
@@ -36,7 +41,11 @@ export const Time = styled.div`
     justify-content: center;
     align-items: center;
     margin-right: 18px;
-    
+
+    @media screen and (max-width: 768px) {
+        width: 20%;
+        height: 42px;
+    }
 `
 export const Title = styled.h2`
     font-weight: 600;
@@ -48,11 +57,20 @@ export const TimeRow = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: 14px;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
 `
 export const TaskContainer = styled.div`
     display: flex;
     flex-direction: row;
     position: relative;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
 `
 export const Line = styled.div`
     position: absolute;
@@ -70,7 +88,7 @@ export const Line = styled.div`
         border-radius: 50%;
         position: absolute;
         top: 50%;
-    background: rgba(0, 0, 0, 0.7);
+        background: rgba(0, 0, 0, 0.7);
 
         transform: translate(-60%, -50%);
     }

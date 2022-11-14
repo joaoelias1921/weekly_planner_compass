@@ -13,6 +13,10 @@ export const Card = styled.div`
     backdrop-filter: blur(10.5px);
     border-radius: 15px;
     margin: 0 16px;
+
+    @media screen and (max-width: 768px) {
+        min-width: 30%;
+    }
 `
 
 export const CardTag = styled.div`

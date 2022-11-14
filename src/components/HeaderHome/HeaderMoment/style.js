@@ -16,4 +16,8 @@ export const StyledClock = styled.p`
 export const StyledDate = styled.p`
     font-size: 1.3rem;
     font-weight: 400;
+
+    @media screen and (max-width: 768px){
+        margin-bottom: 30%;
+    }
 `

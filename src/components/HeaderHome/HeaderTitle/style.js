@@ -5,7 +5,7 @@ export const StyledContainer = styled.div`
     background-color: #000;
     border-radius: 0 1rem 1rem 0;
     width: 30%;
-    height: 4rem;
+    height: 65%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -17,5 +17,12 @@ export const StyledContainer = styled.div`
 
     p {
         color: #FFF;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        height: 16vh;
+        border-radius: 0px;
+        margin-bottom: 5%;
     }
 `

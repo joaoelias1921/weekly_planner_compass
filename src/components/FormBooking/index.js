@@ -9,8 +9,8 @@ import InputMask from 'react-input-mask';
 function PhoneInput(props) {
   return (
     <React.Fragment>
-      <InputMask 
-        style={{width: '95px', height: '30px'}}
+      <InputMask
+        className="timeInput"
         list='time'
         mask={props.value ? '99h 99m' : ''} 
         value={props.value} 
@@ -36,8 +36,7 @@ const FormBooking = () => {
   const handleClickAdd = () => {
     setCount(count + 1)
     try {
-      if(description != ""){
-
+      if(description !== ""){
         setListBooking( current => [...current, {id:count,description, weekday:weekDay, time}])
         setDescription('')
       }else{
@@ -61,39 +60,45 @@ const FormBooking = () => {
     <React.Fragment>
       <S.Container>
         <S.Form>
+          <S.FormInputs>
+            <input
+              type="text"
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              placeholder='Task or issue'
+            /> 
           
-          <input
-          type="text"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-            placeholder='Task or issue'
-          /> 
-        
-          <select value={weekDay} onChange={e => setWeekDay(e.target.value)}>
-            {weekly.map(value => (
-              <option value={value}>{value[0].toUpperCase() + value.substring(1)}</option>
-            ))}
-  
-          </select>
+            <select value={weekDay} onChange={e => setWeekDay(e.target.value)}>
+              {weekly.map((value, index) => (
+                <option 
+                  key={index}
+                  value={value}>{value[0].toUpperCase() + value.substring(1)}
+                </option>
+              ))}
+            </select>
 
-          <PhoneInput 
-            list="cars"
-            value={time} 
-            onChange={handleInput}>
-          </PhoneInput>
-          <datalist id="time">
-            <option>10h30m</option>
-            <option>11h30m</option>
-            <option>12h30m</option>
-            <option>13h30m</option>
-          </datalist>
- 
-        <S.Button>
-          <button style={{backgroundColor: '#4CAF50', color: 'white' }} onClick={handleClickAdd}>
-          <FontAwesomeIcon icon={faPlus} /> Add to calendar</button>
-          <button style={{backgroundColor: '#F44336', color: 'white' }}  onClick={handleClickDelete}>
-          <FontAwesomeIcon icon={faMinus} /> Delete All</button>
-        </S.Button>
+            <PhoneInput 
+              list="cars"
+              value={time} 
+              onChange={handleInput}>
+            </PhoneInput>
+
+            <datalist id="time">
+              <option>10h30m</option>
+              <option>11h30m</option>
+              <option>12h30m</option>
+              <option>13h30m</option>
+            </datalist>
+          </S.FormInputs>
+          
+          <S.FormBtns>
+            <button style={{backgroundColor: '#4CAF50', color: 'white' }} onClick={handleClickAdd}>
+              <FontAwesomeIcon icon={faPlus} /> Add to calendar
+            </button>
+            <button style={{backgroundColor: '#F44336', color: 'white' }}  onClick={handleClickDelete}>
+              <FontAwesomeIcon icon={faMinus} /> Delete All
+            </button>
+          </S.FormBtns>
         </S.Form>
       </S.Container>
     </React.Fragment>
