@@ -19,8 +19,7 @@ export function Login() {
     api.get('users.json').then(response => {
       const { data } = response;
       const userData = Object.values(data).find(value => value.firstName === user && value.password === password)
-      console.log(userData, 'resp')
-      
+ 
       if (userData !== undefined) {
         window.localStorage.setItem('user', JSON.stringify(userData));
         localStorage.setItem('auth', true)
