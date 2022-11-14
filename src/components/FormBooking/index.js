@@ -1,28 +1,47 @@
 import * as S from './style';
-import React, {useEffect, useState} from "react";
-import { useListBooking } from '../Context/ListBooking'
+import React, { useState } from "react";
+import { useListBooking } from '../Context/ListBooking';
 import { useSelectWeekDay } from '../Context/SelectWeekDay';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import InputMask from 'react-input-mask';
+
+function PhoneInput(props) {
+  return (
+    <React.Fragment>
+      <InputMask 
+        style={{width: '95px', height: '30px'}}
+        list='time'
+        mask={props.value ? '99h 99m' : ''} 
+        value={props.value} 
+        onChange={props.onChange}>
+      </InputMask>
+       
+    </React.Fragment>
+  );
+}
+
 const FormBooking = () => {
 
    
-  const [description, setDescription] = useState();
+  const [description, setDescription] = useState("");
   const [weekDay, setWeekDay] = useState('Monday');
   const [time, setTime] = useState('10h30m');
   const { selectedWeekDay } = useSelectWeekDay();
   const { listBooking, setListBooking } = useListBooking();
   const [count, setCount] = useState(6)
 
+  const handleInput = ({ target: { value } }) => setTime(value);
+
   const handleClickAdd = () => {
     setCount(count + 1)
     try {
-      if(description != null){
+      if(description != ""){
 
         setListBooking( current => [...current, {id:count,description, weekday:weekDay, time}])
         setDescription('')
       }else{
-        alert('Required field!')
+        alert('Task is required field!')
       }
        
     } catch (error) {
@@ -57,17 +76,18 @@ const FormBooking = () => {
   
           </select>
 
-        <select value={time} onChange={e => setTime(e.target.value)}>
-          <option value="10h30m">10:30</option>
-          <option value="11:00">11:00</option>
-          <option value="11:30">11:30</option>
-          <option value="12:00">12:00</option>
-          <option value="12:30">12:30</option>
-          <option value="13:00">13:00</option>
-          <option value="13:30">13:30</option>
-        </select>
-       
-        
+          <PhoneInput 
+            list="cars"
+            value={time} 
+            onChange={handleInput}>
+          </PhoneInput>
+          <datalist id="time">
+            <option>10h30m</option>
+            <option>11h30m</option>
+            <option>12h30m</option>
+            <option>13h30m</option>
+          </datalist>
+ 
         <S.Button>
           <button style={{backgroundColor: '#4CAF50', color: 'white' }} onClick={handleClickAdd}>
           <FontAwesomeIcon icon={faPlus} /> Add to calendar</button>
