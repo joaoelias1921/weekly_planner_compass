@@ -3,57 +3,18 @@ import React, { useState } from 'react';
 import { DayTabs } from '../../components/DayTabs';
 import { Tasks } from '../../components/Tasks';
 import { Header } from '../../components/HeaderHome'
+import FormBooking from '../../components/FormBooking';
 
 export function Dashboard() {
   
-  const WEEKDAY_JSON_MODEL = [
-    {
-      time: '07h30m',
-      tasks: [
-        {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-      ]
-    },
-    {
-      time: '09h30m',
-      tasks: [
-        {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-      ]
-    },
-    {
-      time: '09h45m',
-      tasks: [
-        {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-        {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-      ]
-    },
-    {
-      time: '09h45m',
-      tasks: [
-        {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-        {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-      ]
-    },
-    {
-      time: '09h45m',
-      tasks: [
-        {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-        {description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
-      ]
-    }
-  ]
-  
-
-
-  console.log(JSON.stringify(WEEKDAY_JSON_MODEL));
   const [weekDayTasks, setWeekDayTasks] = useState([]);
 
   return (
     <S.PlannerContainer>
       <Header />
       <S.Container>
-        
-        {/* Form Component */}
-        
+
+        <FormBooking />
         <S.TabContainer>
           <DayTabs setWeekDayTasks={setWeekDayTasks} />
         </S.TabContainer>

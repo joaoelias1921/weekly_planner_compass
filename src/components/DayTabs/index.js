@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import * as S from './styles';
 import { Tab } from './Tab';
+import { useSelectWeekDay } from '../Context/SelectWeekDay';
 
 export function DayTabs({setWeekDayTasks}) {
-  const [selectedWeekDay, setSelectedWeekDay] = useState("Monday");
+
+  const {selectedWeekDay, setSelectedWeekDay } = useSelectWeekDay();
 
   const weekDays = [
     { weekDay: "Monday", color: "#FF0024" },
@@ -24,7 +26,7 @@ export function DayTabs({setWeekDayTasks}) {
 
   return (
     <S.Container>
-      {console.log(weekDays.filter(day => day.weekDay == selectedWeekDay))}
+       
       {
         weekDays.map((day) => (
           <Tab

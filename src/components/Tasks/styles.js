@@ -4,7 +4,27 @@ export const Tasks = styled.div`
 
     min-width: 100%;
     overflow: scroll;
+    background-attachment: fixed, scroll;
     flex-grow: 1;
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+     
+    ::-webkit-scrollbar-track {
+       background: #f1f1f1;
+     }
+     
+    ::-webkit-scrollbar-thumb {
+       background: #888;
+       border: 4px solid transparent;
+       border-radius: 8px;
+     }
+     
+     ::-webkit-scrollbar-thumb:hover {
+       background: #555;
+     }
+ 
 `
 export const Time = styled.div`
     background-color: ${(props) => props.color};
@@ -16,6 +36,7 @@ export const Time = styled.div`
     justify-content: center;
     align-items: center;
     margin-right: 18px;
+    
 `
 export const Title = styled.h2`
     font-weight: 600;
