@@ -5,6 +5,8 @@ import { Button } from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 
+import api from '../../services/api';
+
 export function Login() {
   const [user, setUser] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -14,11 +16,21 @@ export function Login() {
 
   function handleNavigation(e) {
     e.preventDefault();
-    if (user === 'compass' && password === '12345') {
-      navigate('/');
-    } else {
+    api.get('users.json').then(response => {
+      const { data } = response;
+      const userData = Object.values(data).find(value => value.firstName === user && value.password === password)
+ 
+      if (userData !== undefined) {
+        window.localStorage.setItem('user', JSON.stringify(userData));
+        localStorage.setItem('auth', true)
+        navigate('/home');
+      } else {
+        setError(true);
+      }
+    }).catch(error => {
       setError(true);
-    }
+    })
+ 
   }
 
   return (

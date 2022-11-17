@@ -7,6 +7,7 @@ import { SimpleInput } from '../../components/SimpleInput';
 import { useNavigate } from 'react-router-dom';
 import { maskBirth } from '../../utils/maskBirth';
 import { validateEmail } from '../../utils/validateEmail';
+import api from '../../services/api';
 
 export function SignUp() {
   const [data, setData] = React.useState({
@@ -63,6 +64,9 @@ export function SignUp() {
       validateEmail(data.email) &&
       data.password === data.samePassword
     ) {
+      api.post('users.json', data).then(response => {
+        console.log(response, 'response')
+      })
       window.localStorage.setItem('user', JSON.stringify(data));
       setError('');
       navigate('/login');
